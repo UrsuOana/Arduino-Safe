@@ -32,7 +32,7 @@ Daca dorim sa schimbam parola se apasa tasta #, se introduce parola veche (0000)
 10. 40 x Fire Dupont tată-tată 10cm - 11,14 lei - https://ardushop.ro/ro/home/1831-10-x-fire-dupont-tata-tata-10cm.html?search_query=fire+tata+tata&results=297
 11. 40 x Fire Dupont mamă-tată 20cm – 15,90 lei - https://ardushop.ro/ro/electronica/24-40-x-fire-dupont-tata-mama-10-cm2.html?search_query=fire+mama+tata&results=315
 12. Set Jumper breadboard 140 – 11,49 lei - https://ardushop.ro/ro/home/1374-set-jumper-breadboard-140.html
-13. Tranzistor IRFZ44N, 49A, 55V, TO-220 – 5 lei - https://www.emag.ro/tranzistor-irfz44n-49a-55v-to-220-ai632-s629/pd/D9QY0DMBM/?cmpid=86724&gclid=Cj0KCQiAqbyNBhC2ARIsALDwAsDIUHL1s5nrjqfMk6eg7W08CzTtA615yQwX_S_D9i5MOD1yE8VubBcaAnstEALw_wcB
+13. Tranzistor IRFZ44N, 49A, 55V, TO-220 – 5 lei - https://www.emag.ro/tranzistor-irfz44n-49a-55v-to-220-ai632-s629/pd/D9QY0DMBM/cmpid=86724&gclid=Cj0KCQiAqbyNBhC2ARIsALDwAsDIUHL1s5nrjqfMk6eg7W08CzTtA615yQwX_S_D9i5MOD1yE8VubBcaAnstEALw_wcB
 Total : 168.88 RON
 
 
