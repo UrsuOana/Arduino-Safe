@@ -1,0 +1,225 @@
+#include <Keypad.h>
+#include <LiquidCrystal_I2C.h>
+#include <EEPROM.h>
+ 
+
+LiquidCrystal_I2C lcd(0x27,16,2);
+
+char parola[4], parola_default[4],parola2[4];
+int i=0;
+char customKey=0;
+
+const byte ROWS = 4; 
+const byte COLS = 3; 
+char hexaKeys[ROWS][COLS] = {
+  {'1','2','3'},
+  {'4','5','6'},
+  {'7','8','9'},
+  {'*','0','#'}
+};
+
+byte rowPins[ROWS] = {8, 7, 6, 5}; 
+byte colPins[COLS] = {4, 3, 2}; 
+
+Keypad customKeypad = Keypad( makeKeymap(hexaKeys), rowPins, colPins, ROWS, COLS);
+
+int lock = 13;
+int buzzer = 10;
+
+void setup()
+{
+  Serial.begin(9600);
+  pinMode(11, OUTPUT);
+  
+  lcd.init();
+  lcd.backlight();
+  pinMode(lock, OUTPUT);
+  pinMode(buzzer, OUTPUT);
+  lcd.print("Seiful e inchis");
+  delay(2000);
+  lcd.clear();
+  lcd.print("Scrieti parola:");
+  lcd.setCursor(0,1);
+  
+  
+  for(int j=0;j<4;j++)
+    EEPROM.write(j, 48);      //48 = 0 in codul ASCII
+  for(int j=0;j<4;j++)
+    parola_default[j]=EEPROM.read(j);
+}
+
+void loop()
+{
+  customKey = customKeypad.getKey(); 
+  
+  if(customKey == '#')
+    schimba_parola();
+ 
+  if (customKey)
+  {
+    parola[i++]=customKey;
+    lcd.print(customKey);
+    beep();
+  }
+  
+  if(i==4)
+  {
+    delay(200);
+    for(int j=0;j<4;j++)
+      parola_default[j]=EEPROM.read(j);
+    
+    if(!(strncmp(parola, parola_default,4)))
+    {
+      digitalWrite(lock, HIGH);
+      melodie_corect();      
+      delay(200);
+      digitalWrite(lock, LOW);
+      lcd.clear();
+      lcd.print("Scrieti parola:");
+      lcd.setCursor(0,1);
+      i=0;     
+    }
+    
+    else
+    {
+      melodie_gresit();
+      lcd.clear();
+      lcd.print("Parola gresita!");
+      delay(2000);
+      lcd.clear();
+      lcd.print("Scrieti parola:");
+      lcd.setCursor(0,1);
+      i=0;
+  //    digitalWrite(buzzer, LOW);
+    }
+  }
+}
+
+void schimba_parola()
+{
+  int j=0;
+  lcd.clear();
+  lcd.print("Parola curenta:");
+  lcd.setCursor(0,1);
+  while(j<4)
+  {
+    char key=customKeypad.getKey();
+    if(key)
+    {
+      parola2[j++]=key;
+      lcd.print(key);
+      beep();
+    }
+    key=0;
+  }
+  delay(500);
+
+  if((strncmp(parola2, parola_default, 4)))
+  {
+    lcd.clear();
+    lcd.print("Parola gresita!");
+    melodie_gresit();
+  }
+  else
+  {
+    j=0;
+    lcd.clear();
+    lcd.print("Noua parola:");
+    lcd.setCursor(0,1);
+    while(j<4)
+    {
+      char key=customKeypad.getKey();
+      if(key)
+      {
+        parola_default[j]=key;
+        lcd.print(key);
+        EEPROM.write(j,key);
+        j++;
+        beep();
+      }
+      delay(500);
+    }
+    lcd.clear();
+    lcd.print("Parola schimbata");
+    tone(buzzer,1500);
+    delay(700);
+    noTone(buzzer);
+    delay(1000);
+  }
+  lcd.clear();
+  lcd.print("Scrieti parola");
+  lcd.setCursor(0,1);
+  customKey=0;
+}
+void beep()
+{
+  tone(buzzer,1000);
+  delay(100);
+  noTone(buzzer);
+}
+
+void melodie_gresit()
+{  
+    for (int j=0; j<=2; j++)
+    {
+        tone(buzzer,400);
+        delay(100);
+        noTone(buzzer);
+        delay(100);
+    }   
+    delay(200); 
+}
+
+void melodie_corect()
+{
+      lcd.clear();
+      lcd.print("Seiful e deschis");
+      
+ #define NOTE_C5 523    
+ #define NOTE_D5 587  
+ #define NOTE_E5 659  
+ #define NOTE_F5 698    
+ #define NOTE_G5 784  
+ #define NOTE_A5 880  
+ #define NOTE_AS5 932  
+ #define REST 0  
+ int tempo = 140; 
+ int melody[] = {  
+  // Score available at https://musescore.com/user/6208766/scores/1497501  
+  NOTE_C5,4, //1  
+  NOTE_F5,4, NOTE_F5,8, NOTE_G5,8, NOTE_F5,8, NOTE_E5,8,  
+  NOTE_D5,4, NOTE_D5,4, NOTE_D5,4,  
+  NOTE_G5,4, NOTE_G5,8, NOTE_A5,8, NOTE_G5,8, NOTE_F5,8,  
+  NOTE_E5,4, NOTE_C5,4, NOTE_C5,4,  
+  NOTE_A5,4, NOTE_A5,8, NOTE_AS5,8, NOTE_A5,8, NOTE_G5,8,  
+  NOTE_F5,4, NOTE_D5,4, NOTE_C5,8, NOTE_C5,8,  
+  NOTE_D5,4, NOTE_G5,4, NOTE_E5,4,  
+  NOTE_F5,2
+ };  
+ 
+ int notes = sizeof(melody) / sizeof(melody[0]) / 2;   
+ int wholenote = (60000 * 4) / tempo;  
+ int divider = 0, noteDuration = 0; 
+
+    for (int thisNote = 0; thisNote < notes * 2; thisNote = thisNote + 2) 
+    {  
+      // calculates the duration of each note  
+      divider = melody[thisNote + 1];  
+      if (divider > 0) 
+      {  
+      // regular note, just proceed  
+      noteDuration = (wholenote) / divider;  
+      } 
+      else if (divider < 0) 
+      {  
+      // dotted notes are represented with negative durations!!  
+      noteDuration = (wholenote) / abs(divider);  
+      noteDuration *= 1.5; // increases the duration in half for dotted notes  
+      }  
+     
+      tone(buzzer, melody[thisNote], noteDuration * 0.9);    
+      delay(noteDuration); 
+      noTone(buzzer);  
+    }
+  delay(500);
+} 
