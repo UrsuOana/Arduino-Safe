@@ -1,19 +1,24 @@
-1. Motivatie
 
-A. De ce am ales acest proiect ?
-	Am ales acest proiect dupa ce am cautat pe Google mai multe idei de proiecte ce pot fi realizate cu ajutorul placii Arduino. Fiind primul meu proiect de acest gen, mi s-a parut destul de simplu de realizat si mi-a placut faptul ca foloseste mai multe componente diferite, ajutandu-ma astfel sa invat si sa-mi dezvolt abilitatile de hardware.
+# I. Motivatie
 
-B. Utilitate
+## A. De ce am ales acest proiect?
+Am ales acest proiect dupa ce am cautat pe Google mai multe idei de proiecte ce pot fi realizate cu ajutorul placii Arduino. Fiind primul meu proiect de acest gen, mi s-a parut destul de simplu de realizat si mi-a placut faptul ca foloseste mai multe componente diferite, ajutandu-ma astfel sa invat si sa-mi dezvolt abilitatile de hardware.
+
+## B. Utilitate
 Dupa o eventuala schimbare a cutiei de carton cu una de lemn sau de plastic, proiectul poate fi folosit ca un seif pentru depozitarea oricarui lucru de valoare pe care nu vrem sa-l pierdem.
 
-C. Cum se foloseste ?
+## C. Cum se foloseste?
 Pentru a putea deschide seiful trebuie introdus codul 0000.
 In cazul in care codul nu este corect, putem reintroduce codul pana il ghicim.
 Daca dorim sa schimbam parola se apasa tasta #, se introduce parola veche (0000), iar apoi parola noua.
-2. Arhitectura hardware
 
 
-3. Cheltuieli
+
+
+# II. Arhitectura hardware
+<img width="746" alt="Schema proiect" src="https://user-images.githubusercontent.com/103102760/161979258-14c09eaf-49c2-420b-8a0f-77ced30fbc35.png">
+
+# III. Cheltuieli
 
 1. Arduino Uno – 29,75 lei -  https://ardushop.ro/ro/home/29-placa-de-dezvoltare-uno-r3.html?search_query=arduino+uno&results=254	
 2. LCD 1602 verde + IIC - 24,12 lei  - https://ardushop.ro/ro/home/1893-lcd-1602-verde-iic.html?search_query=ecran+lcd&results=56
@@ -31,13 +36,17 @@ Daca dorim sa schimbam parola se apasa tasta #, se introduce parola veche (0000)
 Total : 168.88 RON
 
 
-4. Arhitectura software
-Keypad.h – necesara pentru tastatura matriceala
-LiquidCrystal_I2C.h – necesara pentru ecranul LCD
-EEPROM.h – necesara pentru a accesa memoria Arduino 
 
 
-5. Bibliografie: 
+# IV. Arhitectura software
+1. Keypad.h – necesara pentru tastatura matriceala
+2. LiquidCrystal_I2C.h – necesara pentru ecranul LCD
+3. EEPROM.h – necesara pentru a accesa memoria Arduino 
+
+
+
+
+# V. Bibliografie: 
 1.	https://ardushop.ro/ro/electronica/36-lcd-1602.html?search_query=lcd&results=38  – sectiunea descarcari 
 2.	http://nicuflorica.blogspot.com/2013/02/arduino-si-o-tastatura-cu-12-butoane.html
 3.	https://playground.arduino.cc/Main/KeypadTutorial/
