@@ -1,7 +1,7 @@
+# I. Motivation
 
-# I. Motivatie
+## A. Why did I choose this project?
 
-## A. De ce am ales acest proiect?
 Am ales acest proiect dupa ce am cautat pe Google mai multe idei de proiecte ce pot fi realizate cu ajutorul placii Arduino. Fiind primul meu proiect de acest gen, mi s-a parut destul de simplu de realizat si mi-a placut faptul ca foloseste mai multe componente diferite, ajutandu-ma astfel sa invat si sa-mi dezvolt abilitatile de hardware.
 
 ## B. Utilitate
