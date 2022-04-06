@@ -2,7 +2,7 @@
 
 ## A. Why did I choose this project?
 
-Am ales acest proiect dupa ce am cautat pe Google mai multe idei de proiecte ce pot fi realizate cu ajutorul placii Arduino. Fiind primul meu proiect de acest gen, mi s-a parut destul de simplu de realizat si mi-a placut faptul ca foloseste mai multe componente diferite, ajutandu-ma astfel sa invat si sa-mi dezvolt abilitatile de hardware.
+I chose this project after researching some project ideas that can be done with the help of the Arduino board. Being my first project of this kind, I found it quite simple to achieve and I liked the fact that it uses several different components, thus helping me to learn and develop my hardware skills.
 
 ## B. Utilitate
 Dupa o eventuala schimbare a cutiei de carton cu una de lemn sau de plastic, proiectul poate fi folosit ca un seif pentru depozitarea oricarui lucru de valoare pe care nu vrem sa-l pierdem.
